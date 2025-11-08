@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M BOX - Image Sharing</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px 0;
+            background: linear-gradient(135deg, #5C6AC4, #4A55A2);
+            color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .title {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .upload-section {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            margin-bottom: 40px;
+        }
+
+        .upload-section h2 {
+            margin-bottom: 20px;
+            color: #5C6AC4;
+        }
+
+        #uploadForm {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 500px;
+        }
+
+        #imageInput {
+            padding: 12px;
+            border: 2px dashed #5C6AC4;
+            border-radius: 5px;
+            background-color: #f8f9ff;
+        }
+
+        #imageInput:hover {
+            background-color: #eef1ff;
+        }
+
+        button {
+            padding: 12px 20px;
+            background-color: #5C6AC4;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #4A55A2;
+        }
+
+        .gallery-section {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .gallery-section h2 {
+            margin-bottom: 20px;
+            color: #5C6AC4;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .image-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            height: 250px;
+            background-color: #f0f2f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .image-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .image-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .no-images {
+            text-align: center;
+            padding: 40px;
+            color: #777;
+            font-style: italic;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .title {
+                font-size: 2rem;
+            }
+            
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 class="title">M BOX</h1>
+            <p>Upload and share your images with everyone</p>
+            <p style="margin-top: 10px;">Website Creator: ꧁༒𝓜𝓾𝓱𝓪𝓶𝓶𝓪𝓭𝓣𝓪𝓺𝓲༒꧂</p>
+        </header>
+
+        <main>
+            <section class="upload-section">
+                <h2>Upload Image</h2>
+                <form id="uploadForm">
+                    <input type="file" id="imageInput" accept="image/*" required>
+                    <button type="submit">Upload</button>
+                </form>
+            </section>
+
+            <section class="gallery-section">
+                <h2>Uploaded Images</h2>
+                <div id="imageGallery" class="gallery"></div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2023 M BOX - All rights reserved</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const uploadForm = document.getElementById('uploadForm');
+            const imageInput = document.getElementById('imageInput');
+            const imageGallery = document.getElementById('imageGallery');
+            
+            // Load existing images from localStorage when page loads
+            loadImages();
+            
+            uploadForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                if (imageInput.files && imageInput.files[0]) {
+                    const file = imageInput.files[0];
+                    
+                    // Check if file is an image
+                    if (!file.type.match('image.*')) {
+                        alert('Please select an image file');
+                        return;
+                    }
+                    
+                    // Create a preview
+                    const reader = new FileReader();
+                    
+                    reader.onload = function(e) {
+                        // Save to localStorage
+                        const imageData = {
+                            id: Date.now(),
+                            url: e.target.result,
+                            timestamp: new Date().toISOString()
+                        };
+                        
+                        saveImage(imageData);
+                        addImageToGallery(imageData);
+                        
+                        // Reset form
+                        imageInput.value = '';
+                    };
+                    
+                    reader.readAsDataURL(file);
+                }
+            });
+            
+            function saveImage(imageData) {
+                let images = JSON.parse(localStorage.getItem('uploadedImages')) || [];
+                images.push(imageData);
+                localStorage.setItem('uploadedImages', JSON.stringify(images));
+            }
+            
+            function loadImages() {
+                const images = JSON.parse(localStorage.getItem('uploadedImages')) || [];
+                if (images.length === 0) {
+                    imageGallery.innerHTML = '<p class="no-images">No images uploaded yet. Be the first to upload one!</p>';
+                    return;
+                }
+                
+                imageGallery.innerHTML = '';
+                images.forEach(image => {
+                    addImageToGallery(image);
+                });
+            }
+            
+            function addImageToGallery(imageData) {
+                const imageItem = document.createElement('div');
+                imageItem.className = 'image-item';
+                imageItem.innerHTML = `<img src="${imageData.url}" alt="Uploaded image">`;
+                imageGallery.prepend(imageItem);
+            }
+        });
+        
+        // Show creator alert on page load
+        window.onload = function() {
+            alert("Website Creator: ꧁༒𝓜𝓾𝓱𝓪𝓶𝓶𝓪𝓭𝓣𝓪𝓺𝓲༒꧂");
+        };
+    </script>
+</body>
+</html>
