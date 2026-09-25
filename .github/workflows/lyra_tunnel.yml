@@ -22,32 +22,45 @@ jobs:
         with:
           python-version: '3.10'
 
-      - name: Install Python Dependencies
+      - name: Install Dependencies
         run: |
           python -m pip install --upgrade pip
           pip install flask requests beautifulsoup4
 
-      - name: Install Cloudflare Tunnel (cloudflared)
+      - name: Install Cloudflare Tunnel
         run: |
           curl -L --output cloudflared.deb https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb
           sudo dpkg -i cloudflared.deb
 
-      - name: Launch Application & TryCloudflare
+      - name: Start App & Cloudflare Tunnel
         run: |
-          python app.py &
-          sleep 3
-          cloudflared tunnel --url http://localhost:5000 > tunnel.log 2>&1 &
-          sleep 8
-          
+          # 1. Background me Flask app robust tareeqe se start karein
+          nohup python app.py > flask.log 2>&1 &
+          sleep 5
+
+          # 2. Verify karein Flask local port 5000 par live hai ya nahi
+          curl -I http://localhost:5000 || (cat flask.log && exit 1)
+
+          # 3. Cloudflare tunnel start karein
+          nohup cloudflared tunnel --url http://localhost:5000 > tunnel.log 2>&1 &
+          sleep 12
+
+          # 4. TryCloudflare URL extract karein
           TUNNEL_URL=$(grep -o 'https://[-a-zA-Z0-9.]*trycloudflare.com' tunnel.log | head -n 1)
-          
+
+          if [ -z "$TUNNEL_URL" ]; then
+            echo "Cloudflare Tunnel generate nahi ho saka. Logs:"
+            cat tunnel.log
+            exit 1
+          fi
+
           echo "================================================="
           echo "LYRA LIVE URL: $TUNNEL_URL"
           echo "================================================="
-          
+
           echo "LIVE_URL=$TUNNEL_URL" >> $GITHUB_ENV
 
-      - name: Update README.md with Live Link
+      - name: Update README.md
         run: |
           cat << EOF > README.md
           # 🚀 LYRA — Next-Gen AI Image Studio
@@ -56,24 +69,22 @@ jobs:
           ---
 
           ### 🌐 Live Application Link
-          Click the badge or link below to access the live app:
-
           [![Live App](https://img.shields.io/badge/LYRA-ONLINE_NOW-6366f1?style=for-the-badge&logo=cloudflare)]($LIVE_URL)
 
-          👉 **Direct URL:** [$LIVE_URL]($LIVE_URL)
+          👉 **Direct Link:** [$LIVE_URL]($LIVE_URL)
 
-          *Note: Powered directly by Google Search Engine. Link updates every 5 hours.*
+          *Link automatically refreshes every 5 hours via GitHub Actions.*
           EOF
 
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add README.md
-          git commit -m "docs: update live TryCloudflare link in README" || echo "No changes to commit"
+          git commit -m "docs: update live link in README" || echo "No changes to commit"
           git push
 
       - name: Keep Active for 5 Hours
         run: |
-          echo "Application active for 5 hours. Sleeping now..."
+          echo "Server live and listening. Waiting for 5 hours..."
           sleep 18000
 
       - name: Trigger Automatic Restart Workflow
@@ -81,7 +92,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          echo "5 Hours completed. Triggering fresh restart..."
+          echo "5 Hours completed. Triggering restart..."
           curl -X POST \
             -H "Authorization: Bearer $GITHUB_TOKEN" \
             -H "Accept: application/vnd.github.v3+json" \
