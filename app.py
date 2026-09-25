@@ -1,10 +1,56 @@
 import os
 import io
+import re
+import json
 import requests
+from bs4 import BeautifulSoup
 from flask import Flask, render_template, request, jsonify, send_file
-from duckduckgo_search import DDGS
 
 app = Flask(__name__, template_folder=".")
+
+def fetch_google_images(prompt, max_results=12):
+    """Direct Scraping Google Images without API Key or Token"""
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+    }
+    url = f"https://www.google.com/search?q={prompt}&tbm=isch"
+    
+    try:
+        response = requests.get(url, headers=headers, timeout=10)
+        if response.status_code != 200:
+            return []
+
+        soup = BeautifulSoup(response.text, "html.parser")
+        images = []
+        
+        # Extract JSON metadata containing high-res image URLs from Google Page Script
+        script_tags = soup.find_all("script")
+        for script in script_tags:
+            if script.string and "AF_initDataCallback" in script.string:
+                # Find image http/https direct links
+                matches = re.findall(r'\["(https?://[^"]+)",\s*\d+,\s*\d+\]', script.string)
+                for img_url in matches:
+                    # Filter out base64, google logos, and thumbnails
+                    if not any(bad in img_url for bad in ["gstatic.com", "google.com", "googleusercontent.com"]):
+                        images.append({"url": img_url, "title": prompt})
+                        if len(images) >= max_results:
+                            break
+            if len(images) >= max_results:
+                break
+                
+        # Fallback to standard img src tags if script regex is empty
+        if not images:
+            for img in soup.find_all("img"):
+                src = img.get("src") or img.get("data-src")
+                if src and src.startswith("http") and "gstatic" not in src:
+                    images.append({"url": src, "title": prompt})
+                    if len(images) >= max_results:
+                        break
+
+        return images
+    except Exception as e:
+        print(f"Error scraping Google: {e}")
+        return []
 
 @app.route("/")
 def index():
@@ -17,15 +63,10 @@ def search_image():
     if not prompt:
         return jsonify({"success": False, "error": "Prompt is required"}), 400
 
-    try:
-        with DDGS() as ddgs:
-            results = list(ddgs.images(prompt, max_results=12))
-            if results:
-                images = [{"url": r.get("image"), "title": r.get("title")} for r in results if r.get("image")]
-                return jsonify({"success": True, "images": images})
-            return jsonify({"success": False, "error": "No images found for this prompt."})
-    except Exception as e:
-        return jsonify({"success": False, "error": str(e)}), 500
+    images = fetch_google_images(prompt)
+    if images:
+        return jsonify({"success": True, "images": images})
+    return jsonify({"success": False, "error": "Google se koi image nahi mili. Dobara try karein."}), 404
 
 @app.route("/api/download", methods=["GET"])
 def download_image():
@@ -34,14 +75,15 @@ def download_image():
         return "Image URL missing", 400
 
     try:
-        res = requests.get(image_url, timeout=12, headers={"User-Agent": "Mozilla/5.0"})
+        res = requests.get(image_url, timeout=12, headers={
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+        })
         if res.status_code == 200:
-            filename = "LYRA_Image.jpg"
             return send_file(
                 io.BytesIO(res.content),
                 mimetype="image/jpeg",
                 as_attachment=True,
-                download_name=filename
+                download_name="LYRA_Google_Image.jpg"
             )
         return "Failed to fetch image from source server.", 400
     except Exception as e:
