@@ -12,7 +12,6 @@
         .btn-gradient { background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%); }
         .btn-gradient:hover { background: linear-gradient(135deg, #4f46e5 0%, #9333ea 100%); }
         
-        /* Vertical Shorts & Standard Video Masking Container */
         .shorts-container { position: relative; width: 100%; aspect-ratio: 9/16; overflow: hidden; background: #000; border-radius: 1rem; }
         .shorts-container iframe { position: absolute; top: -50px; left: -20%; width: 140%; height: calc(100% + 100px); pointer-events: none; }
         .mask-overlay { position: absolute; inset: 0; pointer-events: none; }
@@ -120,7 +119,6 @@
                             tabindex="-1">
                         </iframe>
                         
-                        <!-- AI Overlay Masking -->
                         <div class="mask-overlay flex flex-col justify-between p-3">
                             <div class="flex justify-between items-center z-10">
                                 <span class="bg-black/70 backdrop-blur-md text-indigo-400 text-[10px] font-bold px-2.5 py-1 rounded-full border border-indigo-500/30 tracking-wider">
@@ -131,7 +129,6 @@
                                 </span>
                             </div>
 
-                            <!-- Signature MT Logo in Center -->
                             <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
                                 <div class="w-12 h-12 rounded-full bg-purple-900/50 backdrop-blur-md border border-purple-500/40 flex items-center justify-center text-purple-200 font-extrabold text-sm tracking-tighter opacity-80 shadow-lg">
                                     MT
@@ -155,13 +152,14 @@
                             </a>
 
                             <button 
-                                onclick="shareVideo('${userPrompt}', '${vid.video_id}')"
+                                id="shareBtn-${vid.video_id}"
+                                onclick="shareDirectVideo('${userPrompt}', '${vid.video_id}')"
                                 class="py-2.5 px-2 bg-slate-800 hover:bg-slate-700 text-white text-xs font-bold rounded-xl flex items-center justify-center space-x-1 border border-slate-700 transition-all"
                             >
                                 <svg class="w-3.5 h-3.5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path>
                                 </svg>
-                                <span>Share</span>
+                                <span id="shareText-${vid.video_id}">Share Video</span>
                             </button>
                         </div>
                     </div>
@@ -169,18 +167,41 @@
             `).join('');
         }
 
-        function shareVideo(prompt, id) {
-            const shareData = {
-                title: `LYRA AI Short — ${prompt}`,
-                text: `Watch this AI Generated Short for "${prompt}" created on LYRA Studio!`,
-                url: window.location.href
-            };
+        async function shareDirectVideo(prompt, videoId) {
+            const shareBtn = document.getElementById(`shareBtn-${videoId}`);
+            const shareText = document.getElementById(`shareText-${videoId}`);
+            
+            const originalText = shareText.textContent;
+            shareBtn.disabled = true;
+            shareText.textContent = "Preparing Video...";
 
-            if (navigator.share) {
-                navigator.share(shareData).catch(() => {});
-            } else {
-                navigator.clipboard.writeText(window.location.href);
-                alert("LYRA AI Short link copied to clipboard!");
+            try {
+                // Fetch video file directly from backend endpoint
+                const downloadUrl = `/api/download_yt?id=${videoId}`;
+                const response = await fetch(downloadUrl);
+                const blob = await response.blob();
+                
+                const file = new File([blob], `LYRA_AI_${videoId}.mp4`, { type: 'video/mp4' });
+
+                if (navigator.canShare && navigator.canShare({ files: [file] })) {
+                    await navigator.share({
+                        files: [file],
+                        title: `LYRA AI Video — ${prompt}`,
+                        text: `AI Video generated for prompt: "${prompt}"`
+                    });
+                } else {
+                    // Fallback for browsers that don't support direct file sharing via Web Share API
+                    const tempLink = document.createElement('a');
+                    tempLink.href = URL.createObjectURL(blob);
+                    tempLink.download = `LYRA_AI_${videoId}.mp4`;
+                    tempLink.click();
+                    alert("Aapka browser direct file share support nahi karta. Video file download kar di gayi hai!");
+                }
+            } catch (err) {
+                alert("Video file fetch nahi ho saki. Please retry.");
+            } finally {
+                shareBtn.disabled = false;
+                shareText.textContent = originalText;
             }
         }
 
