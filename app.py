@@ -1,7 +1,6 @@
 import os
 import io
 import re
-import json
 import requests
 from bs4 import BeautifulSoup
 from flask import Flask, render_template, request, jsonify, send_file
@@ -9,7 +8,6 @@ from flask import Flask, render_template, request, jsonify, send_file
 app = Flask(__name__, template_folder=".")
 
 def fetch_google_images(prompt, max_results=12):
-    """Direct Scraping Google Images without API Key or Token"""
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
     }
@@ -23,14 +21,11 @@ def fetch_google_images(prompt, max_results=12):
         soup = BeautifulSoup(response.text, "html.parser")
         images = []
         
-        # Extract JSON metadata containing high-res image URLs from Google Page Script
         script_tags = soup.find_all("script")
         for script in script_tags:
             if script.string and "AF_initDataCallback" in script.string:
-                # Find image http/https direct links
                 matches = re.findall(r'\["(https?://[^"]+)",\s*\d+,\s*\d+\]', script.string)
                 for img_url in matches:
-                    # Filter out base64, google logos, and thumbnails
                     if not any(bad in img_url for bad in ["gstatic.com", "google.com", "googleusercontent.com"]):
                         images.append({"url": img_url, "title": prompt})
                         if len(images) >= max_results:
@@ -38,7 +33,6 @@ def fetch_google_images(prompt, max_results=12):
             if len(images) >= max_results:
                 break
                 
-        # Fallback to standard img src tags if script regex is empty
         if not images:
             for img in soup.find_all("img"):
                 src = img.get("src") or img.get("data-src")
@@ -66,7 +60,7 @@ def search_image():
     images = fetch_google_images(prompt)
     if images:
         return jsonify({"success": True, "images": images})
-    return jsonify({"success": False, "error": "Google se koi image nahi mili. Dobara try karein."}), 404
+    return jsonify({"success": False, "error": "Google se koi image nahi mili."}), 404
 
 @app.route("/api/download", methods=["GET"])
 def download_image():
