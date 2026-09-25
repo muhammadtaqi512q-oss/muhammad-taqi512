@@ -1,50 +1,61 @@
 import os
 import io
 import re
+import urllib.parse
 import requests
 from bs4 import BeautifulSoup
 from flask import Flask, render_template, request, jsonify, send_file
 
 app = Flask(__name__, template_folder=".")
 
-def fetch_google_images(prompt, max_results=12):
+def fetch_images_smart(prompt, max_results=12):
+    """Google Direct Scraping with Unsplash Fallback Engine"""
+    images = []
+    
+    # 1. Try Google Scraping with Desktop Browser Headers
     headers = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+        "Accept-Language": "en-US,en;q=0.9"
     }
-    url = f"https://www.google.com/search?q={prompt}&tbm=isch"
+    encoded_prompt = urllib.parse.quote(prompt)
+    google_url = f"https://www.google.com/search?q={encoded_prompt}&tbm=isch"
     
     try:
-        response = requests.get(url, headers=headers, timeout=10)
-        if response.status_code != 200:
-            return []
-
-        soup = BeautifulSoup(response.text, "html.parser")
-        images = []
-        
-        script_tags = soup.find_all("script")
-        for script in script_tags:
-            if script.string and "AF_initDataCallback" in script.string:
-                matches = re.findall(r'\["(https?://[^"]+)",\s*\d+,\s*\d+\]', script.string)
-                for img_url in matches:
-                    if not any(bad in img_url for bad in ["gstatic.com", "google.com", "googleusercontent.com"]):
-                        images.append({"url": img_url, "title": prompt})
-                        if len(images) >= max_results:
-                            break
-            if len(images) >= max_results:
-                break
-                
-        if not images:
-            for img in soup.find_all("img"):
-                src = img.get("src") or img.get("data-src")
-                if src and src.startswith("http") and "gstatic" not in src:
-                    images.append({"url": src, "title": prompt})
+        res = requests.get(google_url, headers=headers, timeout=8)
+        if res.status_code == 200:
+            # Regular Expression to match Google's image array payload
+            pattern = r'\["(https?://[^"]+\.(?:png|jpg|jpeg|webp))",\s*\d+,\s*\d+\]'
+            matches = re.findall(pattern, res.text, re.IGNORECASE)
+            
+            for img_url in matches:
+                if not any(bad in img_url for bad in ["gstatic.com", "google.com", "googleapis.com"]):
+                    images.append({"url": img_url, "title": prompt})
                     if len(images) >= max_results:
                         break
-
-        return images
+                        
+            # Secondary check: BeautifulSoup for standard tags if regex yields few results
+            if len(images) < 4:
+                soup = BeautifulSoup(res.text, "html.parser")
+                for img in soup.find_all("img"):
+                    src = img.get("src") or img.get("data-src")
+                    if src and src.startswith("http") and "gstatic" not in src:
+                        images.append({"url": src, "title": prompt})
+                        if len(images) >= max_results:
+                            break
     except Exception as e:
-        print(f"Error scraping Google: {e}")
-        return []
+        print(f"Google fetch exception: {e}")
+
+    # 2. Fallback to High-Resolution Unsplash Engine if Google yields nothing
+    if not images:
+        print("Google blocking detected. Switching to Unsplash Fallback Engine...")
+        try:
+            for i in range(1, max_results + 1):
+                fallback_url = f"https://source.unsplash.com/featured/800x600/?{encoded_prompt}&sig={i}"
+                images.append({"url": fallback_url, "title": f"{prompt} - HD Result {i}"})
+        except Exception as e:
+            print(f"Fallback exception: {e}")
+
+    return images
 
 @app.route("/")
 def index():
@@ -57,10 +68,11 @@ def search_image():
     if not prompt:
         return jsonify({"success": False, "error": "Prompt is required"}), 400
 
-    images = fetch_google_images(prompt)
+    images = fetch_images_smart(prompt)
     if images:
         return jsonify({"success": True, "images": images})
-    return jsonify({"success": False, "error": "Google se koi image nahi mili."}), 404
+    
+    return jsonify({"success": False, "error": "Image fetch nahi ho saki. Dobara try karein."}), 404
 
 @app.route("/api/download", methods=["GET"])
 def download_image():
@@ -77,7 +89,7 @@ def download_image():
                 io.BytesIO(res.content),
                 mimetype="image/jpeg",
                 as_attachment=True,
-                download_name="LYRA_Google_Image.jpg"
+                download_name="LYRA_Image.jpg"
             )
         return "Failed to fetch image from source server.", 400
     except Exception as e:
