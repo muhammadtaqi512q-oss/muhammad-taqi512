@@ -7,9 +7,9 @@ from flask import Flask, render_template, request, jsonify, send_file
 
 app = Flask(__name__, template_folder=".")
 
-def fetch_youtube_ai_videos(prompt, max_results=4):
-    """Fetch video streams directly from YouTube using yt-dlp"""
-    search_query = f"{prompt} ai video generated"
+def fetch_youtube_ai_videos(prompt, max_results=6):
+    """Fetch AI Videos and Shorts directly from YouTube using yt-dlp"""
+    search_query = f"{prompt} ai video shorts"
     
     ydl_opts = {
         'quiet': True,
@@ -33,7 +33,7 @@ def fetch_youtube_ai_videos(prompt, max_results=4):
                     if v_id:
                         videos.append({
                             "video_id": v_id,
-                            "embed_url": f"https://www.youtube.com/embed/{v_id}?autoplay=1&mute=1&loop=1&playlist={v_id}",
+                            "embed_url": f"https://www.youtube.com/embed/{v_id}?autoplay=1&mute=1&controls=0&loop=1&playlist={v_id}&modestbranding=1&rel=0&showinfo=0&iv_load_policy=3&enablejsapi=1",
                             "watch_url": f"https://www.youtube.com/watch?v={v_id}",
                             "title": title
                         })
@@ -57,7 +57,7 @@ def search_video():
     if videos:
         return jsonify({"success": True, "videos": videos})
     
-    return jsonify({"success": False, "error": "YouTube se koi video nahi mili. Please try another prompt."}), 404
+    return jsonify({"success": False, "error": "AI Video ya Short render nahi ho saka. Try another prompt."}), 404
 
 @app.route("/api/download_yt", methods=["GET"])
 def download_youtube_video():
@@ -76,7 +76,6 @@ def download_youtube_video():
     }
 
     try:
-        # Download video to local server temporary storage
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
             ydl.download([youtube_url])
 
@@ -85,7 +84,7 @@ def download_youtube_video():
                 output_path,
                 mimetype="video/mp4",
                 as_attachment=True,
-                download_name=f"LYRA_{video_id}.mp4"
+                download_name=f"LYRA_AI_SHORT_{video_id}.mp4"
             )
         return "Download file process failed.", 400
     except Exception as e:
