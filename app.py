@@ -3,7 +3,7 @@ import io
 import urllib.parse
 import requests
 import yt_dlp
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, send_file
 
 app = Flask(__name__, template_folder=".")
 
@@ -58,6 +58,38 @@ def search_video():
         return jsonify({"success": True, "videos": videos})
     
     return jsonify({"success": False, "error": "YouTube se koi video nahi mili. Please try another prompt."}), 404
+
+@app.route("/api/download_yt", methods=["GET"])
+def download_youtube_video():
+    video_id = request.args.get("id")
+    if not video_id:
+        return "Video ID missing", 400
+
+    youtube_url = f"https://www.youtube.com/watch?v={video_id}"
+    output_path = f"/tmp/{video_id}.mp4"
+
+    ydl_opts = {
+        'format': 'best[ext=mp4]/best',
+        'outtmpl': output_path,
+        'quiet': True,
+        'no_warnings': True,
+    }
+
+    try:
+        # Download video to local server temporary storage
+        with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+            ydl.download([youtube_url])
+
+        if os.path.exists(output_path):
+            return send_file(
+                output_path,
+                mimetype="video/mp4",
+                as_attachment=True,
+                download_name=f"LYRA_{video_id}.mp4"
+            )
+        return "Download file process failed.", 400
+    except Exception as e:
+        return f"Direct download error: {str(e)}", 500
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=False)
