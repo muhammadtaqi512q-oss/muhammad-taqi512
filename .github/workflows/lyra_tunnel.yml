@@ -11,7 +11,7 @@ jobs:
     timeout-minutes: 360
 
     permissions:
-      contents: write # README commit and push permission
+      contents: write
 
     steps:
       - name: Checkout Repository
@@ -25,7 +25,7 @@ jobs:
       - name: Install Python Dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install flask duckduckgo-search requests
+          pip install flask requests beautifulsoup4
 
       - name: Install Cloudflare Tunnel (cloudflared)
         run: |
@@ -39,14 +39,12 @@ jobs:
           cloudflared tunnel --url http://localhost:5000 > tunnel.log 2>&1 &
           sleep 8
           
-          # Link extract karein
           TUNNEL_URL=$(grep -o 'https://[-a-zA-Z0-9.]*trycloudflare.com' tunnel.log | head -n 1)
           
           echo "================================================="
           echo "LYRA LIVE URL: $TUNNEL_URL"
           echo "================================================="
           
-          # URL ko environment variable me save karein next step ke liye
           echo "LIVE_URL=$TUNNEL_URL" >> $GITHUB_ENV
 
       - name: Update README.md with Live Link
@@ -64,10 +62,9 @@ jobs:
 
           👉 **Direct URL:** [$LIVE_URL]($LIVE_URL)
 
-          *Note: This link automatically updates every 5 hours via GitHub Actions.*
+          *Note: Powered directly by Google Search Engine. Link updates every 5 hours.*
           EOF
 
-          # Configure Git & Commit to Repository
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add README.md
