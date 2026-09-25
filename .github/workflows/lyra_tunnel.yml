@@ -1,0 +1,92 @@
+name: LYRA Web App (5-Hour Loop)
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 */5 * * *'
+
+jobs:
+  run-lyra:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+
+    permissions:
+      contents: write # README commit and push permission
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install Python Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install flask duckduckgo-search requests
+
+      - name: Install Cloudflare Tunnel (cloudflared)
+        run: |
+          curl -L --output cloudflared.deb https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb
+          sudo dpkg -i cloudflared.deb
+
+      - name: Launch Application & TryCloudflare
+        run: |
+          python app.py &
+          sleep 3
+          cloudflared tunnel --url http://localhost:5000 > tunnel.log 2>&1 &
+          sleep 8
+          
+          # Link extract karein
+          TUNNEL_URL=$(grep -o 'https://[-a-zA-Z0-9.]*trycloudflare.com' tunnel.log | head -n 1)
+          
+          echo "================================================="
+          echo "LYRA LIVE URL: $TUNNEL_URL"
+          echo "================================================="
+          
+          # URL ko environment variable me save karein next step ke liye
+          echo "LIVE_URL=$TUNNEL_URL" >> $GITHUB_ENV
+
+      - name: Update README.md with Live Link
+        run: |
+          cat << EOF > README.md
+          # 🚀 LYRA — Next-Gen AI Image Studio
+          **Created by:** Muhammad Taqi
+
+          ---
+
+          ### 🌐 Live Application Link
+          Click the badge or link below to access the live app:
+
+          [![Live App](https://img.shields.io/badge/LYRA-ONLINE_NOW-6366f1?style=for-the-badge&logo=cloudflare)]($LIVE_URL)
+
+          👉 **Direct URL:** [$LIVE_URL]($LIVE_URL)
+
+          *Note: This link automatically updates every 5 hours via GitHub Actions.*
+          EOF
+
+          # Configure Git & Commit to Repository
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git commit -m "docs: update live TryCloudflare link in README" || echo "No changes to commit"
+          git push
+
+      - name: Keep Active for 5 Hours
+        run: |
+          echo "Application active for 5 hours. Sleeping now..."
+          sleep 18000
+
+      - name: Trigger Automatic Restart Workflow
+        if: always()
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "5 Hours completed. Triggering fresh restart..."
+          curl -X POST \
+            -H "Authorization: Bearer $GITHUB_TOKEN" \
+            -H "Accept: application/vnd.github.v3+json" \
+            https://api.github.com/repos/${{ github.repository }}/actions/workflows/lyra_tunnel.yml/dispatches \
+            -d '{"ref":"main"}'
