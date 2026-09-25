@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LYRA — YouTube AI Video Engine</title>
+    <title>LYRA — AI Neural Video Engine</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
@@ -11,6 +11,11 @@
         .glass-panel { background: rgba(18, 24, 38, 0.65); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.08); }
         .btn-gradient { background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%); }
         .btn-gradient:hover { background: linear-gradient(135deg, #4f46e5 0%, #9333ea 100%); }
+        
+        /* YouTube Branding Masking Overlay */
+        .video-container { position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden; background: #000; }
+        .video-container iframe { position: absolute; top: -60px; left: 0; width: 100%; height: calc(100% + 120px); pointer-events: none; }
+        .mask-overlay { position: absolute; inset: 0; pointer-events: none; border: 1px solid rgba(255, 255, 255, 0.1); }
     </style>
 </head>
 <body class="min-h-screen flex flex-col justify-between overflow-x-hidden selection:bg-purple-500 selection:text-white">
@@ -21,19 +26,19 @@
     <header class="w-full max-w-7xl mx-auto px-6 py-8 flex justify-between items-center z-10">
         <div class="flex items-center space-x-3">
             <div class="w-10 h-10 rounded-xl btn-gradient flex items-center justify-center font-bold text-xl shadow-lg shadow-indigo-500/30">L</div>
-            <span class="text-2xl font-extrabold tracking-wider bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-200 to-slate-400">LYRA YOUTUBE AI</span>
+            <span class="text-2xl font-extrabold tracking-wider bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-200 to-slate-400">LYRA AI VIDEO</span>
         </div>
-        <div class="text-xs uppercase tracking-widest text-slate-400 font-semibold glass-panel px-4 py-2 rounded-full border">
-            Created by <span class="text-purple-400 font-bold">Muhammad Taqi</span>
+        <div class="text-xs uppercase tracking-widest text-slate-400 font-semibold glass-panel px-4 py-2 rounded-full border flex items-center gap-2">
+            Engine Built By <span class="text-purple-400 font-bold">Muhammad Taqi</span>
         </div>
     </header>
 
     <main class="w-full max-w-5xl mx-auto px-6 py-6 flex-1 flex flex-col justify-center items-center z-10">
         <div class="text-center max-w-2xl mb-10">
             <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-4">
-                Fetch <span class="bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400">YouTube AI Videos</span>
+                Generate <span class="bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400">AI Videos</span>
             </h1>
-            <p class="text-slate-400 text-sm md:text-base">Enter any prompt like "Cute Boy AI" to stream videos instantly.</p>
+            <p class="text-slate-400 text-sm md:text-base">Enter any prompt like "Cute Boy" or "Cyberpunk Girl" to render neural AI videos.</p>
         </div>
 
         <div class="w-full glass-panel rounded-3xl p-3 md:p-4 mb-12 border border-slate-800 shadow-2xl">
@@ -46,7 +51,7 @@
                     required
                 >
                 <button type="submit" id="submitBtn" class="btn-gradient text-white font-bold px-8 py-4 rounded-2xl flex items-center justify-center space-x-2 shrink-0 shadow-lg hover:scale-[1.02] active:scale-95 transition-all">
-                    <span id="btnText">Search YouTube AI</span>
+                    <span id="btnText">Generate AI Video</span>
                     <svg id="loader" class="hidden animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                         <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                         <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
@@ -78,7 +83,7 @@
             if (!prompt) return;
 
             submitBtn.disabled = true;
-            btnText.textContent = "Searching YouTube...";
+            btnText.textContent = "Rendering AI Video...";
             loader.classList.remove('hidden');
             statusMsg.classList.add('hidden');
             resultsGrid.innerHTML = '';
@@ -92,45 +97,99 @@
 
                 const data = await response.json();
                 if (data.success && data.videos.length > 0) {
-                    renderVideos(data.videos);
+                    renderVideos(data.videos, prompt);
                 } else {
-                    showStatus(data.error || 'No videos found.');
+                    showStatus(data.error || 'AI Video rendering failed.');
                 }
             } catch (err) {
-                showStatus('Network connection error. Try again.');
+                showStatus('Connection error. Please try again.');
             } finally {
                 submitBtn.disabled = false;
-                btnText.textContent = "Search YouTube AI";
+                btnText.textContent = "Generate AI Video";
                 loader.classList.add('hidden');
             }
         });
 
-        function renderVideos(videos) {
-            resultsGrid.innerHTML = videos.map((vid) => `
+        function renderVideos(videos, userPrompt) {
+            resultsGrid.innerHTML = videos.map((vid) => {
+                // Masking YouTube Player URL with parameters to hide info & controls
+                const cleanEmbedUrl = `https://www.youtube.com/embed/${vid.video_id}?autoplay=1&mute=1&controls=0&loop=1&playlist=${vid.video_id}&modestbranding=1&rel=0&showinfo=0&iv_load_policy=3&enablejsapi=1`;
+
+                return `
                 <div class="glass-panel rounded-2xl overflow-hidden border border-slate-800 flex flex-col justify-between group transition-all duration-300 hover:border-purple-500/50">
-                    <div class="relative overflow-hidden aspect-video bg-black">
+                    <div class="video-container">
                         <iframe 
-                            src="${vid.embed_url}" 
-                            class="w-full h-full border-0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen>
+                            src="${cleanEmbedUrl}" 
+                            allow="autoplay; encrypted-media" 
+                            tabindex="-1">
                         </iframe>
+                        
+                        <!-- AI Brand Overlays & Watermark -->
+                        <div class="mask-overlay flex flex-col justify-between p-3">
+                            <div class="flex justify-between items-center">
+                                <span class="bg-black/70 backdrop-blur-md text-indigo-400 text-[10px] font-bold px-2.5 py-1 rounded-full border border-indigo-500/30 tracking-wider">
+                                    ✦ LYRA NEURAL AI
+                                </span>
+                                <span class="bg-black/70 text-slate-300 text-[9px] font-mono px-2 py-0.5 rounded">
+                                    1080p AI Render
+                                </span>
+                            </div>
+
+                            <!-- Center Signature Branding "MT" -->
+                            <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                                <div class="w-10 h-10 rounded-full bg-purple-900/40 backdrop-blur-md border border-purple-500/30 flex items-center justify-center text-purple-200 font-extrabold text-xs tracking-tighter opacity-70">
+                                    MT
+                                </div>
+                            </div>
+                        </div>
                     </div>
+
                     <div class="p-4 flex flex-col gap-3">
-                        <p class="text-xs text-slate-300 font-semibold line-clamp-2">${vid.title}</p>
-                        <a 
-                            href="${vid.watch_url}" 
-                            target="_blank"
-                            class="w-full py-3 px-4 btn-gradient text-white text-xs font-bold rounded-xl flex items-center justify-center space-x-2 shadow-md hover:opacity-95 transition-all"
-                        >
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                            </svg>
-                            <span>Watch on YouTube</span>
-                        </a>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-slate-300 font-semibold truncate capitalize">AI Prompt: ${userPrompt}</span>
+                            <span class="text-[10px] text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">Render Complete</span>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-2">
+                            <a 
+                                href="/api/download_yt?id=${vid.video_id}" 
+                                class="py-3 px-3 btn-gradient text-white text-xs font-bold rounded-xl flex items-center justify-center space-x-1 shadow-md hover:opacity-95 transition-all"
+                            >
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                                </svg>
+                                <span>Download AI Video</span>
+                            </a>
+
+                            <button 
+                                onclick="shareVideo('${userPrompt}', '${vid.video_id}')"
+                                class="py-3 px-3 bg-slate-800 hover:bg-slate-700 text-white text-xs font-bold rounded-xl flex items-center justify-center space-x-1.5 border border-slate-700 transition-all"
+                            >
+                                <svg class="w-4 h-4 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path>
+                                </svg>
+                                <span>Share Video</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
-            `).join('');
+            `;
+            }).join('');
+        }
+
+        function shareVideo(prompt, id) {
+            const shareData = {
+                title: `LYRA AI Video — ${prompt}`,
+                text: `Check out this AI Generated Video for "${prompt}" created on LYRA Studio!`,
+                url: window.location.href
+            };
+
+            if (navigator.share) {
+                navigator.share(shareData).catch(() => {});
+            } else {
+                navigator.clipboard.writeText(window.location.href);
+                alert("LYRA AI Video link copied to clipboard!");
+            }
         }
 
         function showStatus(msg) {
