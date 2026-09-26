@@ -4,8 +4,8 @@
 ---
 
 ### 🌐 Live Application Link
-[![Live App](https://img.shields.io/badge/LYRA_AI_VIDEO-ONLINE_NOW-6366f1?style=for-the-badge&logo=cloudflare)](https://photography-everything-sees-slides.trycloudflare.com)
+[![Live App](https://img.shields.io/badge/LYRA_AI_VIDEO-ONLINE_NOW-6366f1?style=for-the-badge&logo=cloudflare)](https://pixel-movies-storage-installations.trycloudflare.com)
 
-👉 **Direct Link:** [https://photography-everything-sees-slides.trycloudflare.com](https://photography-everything-sees-slides.trycloudflare.com)
+👉 **Direct Link:** [https://pixel-movies-storage-installations.trycloudflare.com](https://pixel-movies-storage-installations.trycloudflare.com)
 
 *Link automatically refreshes every 5 hours via GitHub Actions.*
