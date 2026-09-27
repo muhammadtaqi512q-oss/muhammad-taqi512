@@ -4,8 +4,8 @@
 ---
 
 ### 🌐 Live Application Link
-[![Live App](https://img.shields.io/badge/LYRA_AI_VIDEO-ONLINE_NOW-6366f1?style=for-the-badge&logo=cloudflare)](https://coastal-navy-technical-application.trycloudflare.com)
+[![Live App](https://img.shields.io/badge/LYRA_AI_VIDEO-ONLINE_NOW-6366f1?style=for-the-badge&logo=cloudflare)](https://relative-three-evening-actually.trycloudflare.com)
 
-👉 **Direct Link:** [https://coastal-navy-technical-application.trycloudflare.com](https://coastal-navy-technical-application.trycloudflare.com)
+👉 **Direct Link:** [https://relative-three-evening-actually.trycloudflare.com](https://relative-three-evening-actually.trycloudflare.com)
 
 *Link automatically refreshes every 5 hours via GitHub Actions.*
