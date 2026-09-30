@@ -4,8 +4,8 @@
 ---
 
 ### 🌐 Live Application Link
-[![Live App](https://img.shields.io/badge/LYRA_AI_VIDEO-ONLINE_NOW-6366f1?style=for-the-badge&logo=cloudflare)](https://weeks-timber-answering-transmit.trycloudflare.com)
+[![Live App](https://img.shields.io/badge/LYRA_AI_VIDEO-ONLINE_NOW-6366f1?style=for-the-badge&logo=cloudflare)](https://implies-spin-arrangements-brokers.trycloudflare.com)
 
-👉 **Direct Link:** [https://weeks-timber-answering-transmit.trycloudflare.com](https://weeks-timber-answering-transmit.trycloudflare.com)
+👉 **Direct Link:** [https://implies-spin-arrangements-brokers.trycloudflare.com](https://implies-spin-arrangements-brokers.trycloudflare.com)
 
 *Link automatically refreshes every 5 hours via GitHub Actions.*
