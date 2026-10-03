@@ -4,8 +4,8 @@
 ---
 
 ### 🌐 Live Application Link
-[![Live App](https://img.shields.io/badge/LYRA_AI_VIDEO-ONLINE_NOW-6366f1?style=for-the-badge&logo=cloudflare)](https://associations-officially-oem-efficiently.trycloudflare.com)
+[![Live App](https://img.shields.io/badge/LYRA_AI_VIDEO-ONLINE_NOW-6366f1?style=for-the-badge&logo=cloudflare)](https://concept-becomes-diagnostic-single.trycloudflare.com)
 
-👉 **Direct Link:** [https://associations-officially-oem-efficiently.trycloudflare.com](https://associations-officially-oem-efficiently.trycloudflare.com)
+👉 **Direct Link:** [https://concept-becomes-diagnostic-single.trycloudflare.com](https://concept-becomes-diagnostic-single.trycloudflare.com)
 
 *Link automatically refreshes every 5 hours via GitHub Actions.*
