@@ -4,8 +4,8 @@
 ---
 
 ### 🌐 Live Application Link
-[![Live App](https://img.shields.io/badge/LYRA_AI_VIDEO-ONLINE_NOW-6366f1?style=for-the-badge&logo=cloudflare)](https://fathers-grant-asp-untitled.trycloudflare.com)
+[![Live App](https://img.shields.io/badge/LYRA_AI_VIDEO-ONLINE_NOW-6366f1?style=for-the-badge&logo=cloudflare)](https://intake-garmin-drinks-consulting.trycloudflare.com)
 
-👉 **Direct Link:** [https://fathers-grant-asp-untitled.trycloudflare.com](https://fathers-grant-asp-untitled.trycloudflare.com)
+👉 **Direct Link:** [https://intake-garmin-drinks-consulting.trycloudflare.com](https://intake-garmin-drinks-consulting.trycloudflare.com)
 
 *Link automatically refreshes every 5 hours via GitHub Actions.*
