@@ -4,8 +4,8 @@
 ---
 
 ### 🌐 Live Application Link
-[![Live App](https://img.shields.io/badge/LYRA_AI_VIDEO-ONLINE_NOW-6366f1?style=for-the-badge&logo=cloudflare)](https://susan-varies-calcium-proposals.trycloudflare.com)
+[![Live App](https://img.shields.io/badge/LYRA_AI_VIDEO-ONLINE_NOW-6366f1?style=for-the-badge&logo=cloudflare)](https://fathers-grant-asp-untitled.trycloudflare.com)
 
-👉 **Direct Link:** [https://susan-varies-calcium-proposals.trycloudflare.com](https://susan-varies-calcium-proposals.trycloudflare.com)
+👉 **Direct Link:** [https://fathers-grant-asp-untitled.trycloudflare.com](https://fathers-grant-asp-untitled.trycloudflare.com)
 
 *Link automatically refreshes every 5 hours via GitHub Actions.*
