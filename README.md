@@ -4,8 +4,8 @@
 ---
 
 ### 🌐 Live Application Link
-[![Live App](https://img.shields.io/badge/LYRA_AI_VIDEO-ONLINE_NOW-6366f1?style=for-the-badge&logo=cloudflare)](https://intake-garmin-drinks-consulting.trycloudflare.com)
+[![Live App](https://img.shields.io/badge/LYRA_AI_VIDEO-ONLINE_NOW-6366f1?style=for-the-badge&logo=cloudflare)](https://dow-prepared-techrepublic-millions.trycloudflare.com)
 
-👉 **Direct Link:** [https://intake-garmin-drinks-consulting.trycloudflare.com](https://intake-garmin-drinks-consulting.trycloudflare.com)
+👉 **Direct Link:** [https://dow-prepared-techrepublic-millions.trycloudflare.com](https://dow-prepared-techrepublic-millions.trycloudflare.com)
 
 *Link automatically refreshes every 5 hours via GitHub Actions.*
