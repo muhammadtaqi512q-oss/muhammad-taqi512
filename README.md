@@ -4,8 +4,8 @@
 ---
 
 ### 🌐 Live Application Link
-[![Live App](https://img.shields.io/badge/LYRA_AI_VIDEO-ONLINE_NOW-6366f1?style=for-the-badge&logo=cloudflare)](https://gate-round-know-hay.trycloudflare.com)
+[![Live App](https://img.shields.io/badge/LYRA_AI_VIDEO-ONLINE_NOW-6366f1?style=for-the-badge&logo=cloudflare)](https://stickers-friends-roller-bernard.trycloudflare.com)
 
-👉 **Direct Link:** [https://gate-round-know-hay.trycloudflare.com](https://gate-round-know-hay.trycloudflare.com)
+👉 **Direct Link:** [https://stickers-friends-roller-bernard.trycloudflare.com](https://stickers-friends-roller-bernard.trycloudflare.com)
 
 *Link automatically refreshes every 5 hours via GitHub Actions.*
