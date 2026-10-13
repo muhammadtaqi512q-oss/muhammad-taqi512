@@ -4,8 +4,8 @@
 ---
 
 ### 🌐 Live Application Link
-[![Live App](https://img.shields.io/badge/LYRA_AI_VIDEO-ONLINE_NOW-6366f1?style=for-the-badge&logo=cloudflare)](https://verbal-grain-maybe-respect.trycloudflare.com)
+[![Live App](https://img.shields.io/badge/LYRA_AI_VIDEO-ONLINE_NOW-6366f1?style=for-the-badge&logo=cloudflare)](https://segment-craps-dog-percentage.trycloudflare.com)
 
-👉 **Direct Link:** [https://verbal-grain-maybe-respect.trycloudflare.com](https://verbal-grain-maybe-respect.trycloudflare.com)
+👉 **Direct Link:** [https://segment-craps-dog-percentage.trycloudflare.com](https://segment-craps-dog-percentage.trycloudflare.com)
 
 *Link automatically refreshes every 5 hours via GitHub Actions.*
