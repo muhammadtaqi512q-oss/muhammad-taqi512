@@ -4,8 +4,8 @@
 ---
 
 ### 🌐 Live Application Link
-[![Live App](https://img.shields.io/badge/LYRA_AI_VIDEO-ONLINE_NOW-6366f1?style=for-the-badge&logo=cloudflare)](https://lawsuit-llp-motherboard-couple.trycloudflare.com)
+[![Live App](https://img.shields.io/badge/LYRA_AI_VIDEO-ONLINE_NOW-6366f1?style=for-the-badge&logo=cloudflare)](https://group-contribute-santa-twin.trycloudflare.com)
 
-👉 **Direct Link:** [https://lawsuit-llp-motherboard-couple.trycloudflare.com](https://lawsuit-llp-motherboard-couple.trycloudflare.com)
+👉 **Direct Link:** [https://group-contribute-santa-twin.trycloudflare.com](https://group-contribute-santa-twin.trycloudflare.com)
 
 *Link automatically refreshes every 5 hours via GitHub Actions.*
