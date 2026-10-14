@@ -4,8 +4,8 @@
 ---
 
 ### 🌐 Live Application Link
-[![Live App](https://img.shields.io/badge/LYRA_AI_VIDEO-ONLINE_NOW-6366f1?style=for-the-badge&logo=cloudflare)](https://segment-craps-dog-percentage.trycloudflare.com)
+[![Live App](https://img.shields.io/badge/LYRA_AI_VIDEO-ONLINE_NOW-6366f1?style=for-the-badge&logo=cloudflare)](https://probably-movements-primary-kilometers.trycloudflare.com)
 
-👉 **Direct Link:** [https://segment-craps-dog-percentage.trycloudflare.com](https://segment-craps-dog-percentage.trycloudflare.com)
+👉 **Direct Link:** [https://probably-movements-primary-kilometers.trycloudflare.com](https://probably-movements-primary-kilometers.trycloudflare.com)
 
 *Link automatically refreshes every 5 hours via GitHub Actions.*
