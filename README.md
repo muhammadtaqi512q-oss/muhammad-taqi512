@@ -4,8 +4,8 @@
 ---
 
 ### 🌐 Live Application Link
-[![Live App](https://img.shields.io/badge/LYRA_AI_VIDEO-ONLINE_NOW-6366f1?style=for-the-badge&logo=cloudflare)](https://ind-temperatures-rolled-forty.trycloudflare.com)
+[![Live App](https://img.shields.io/badge/LYRA_AI_VIDEO-ONLINE_NOW-6366f1?style=for-the-badge&logo=cloudflare)](https://broadcast-canyon-collectibles-lace.trycloudflare.com)
 
-👉 **Direct Link:** [https://ind-temperatures-rolled-forty.trycloudflare.com](https://ind-temperatures-rolled-forty.trycloudflare.com)
+👉 **Direct Link:** [https://broadcast-canyon-collectibles-lace.trycloudflare.com](https://broadcast-canyon-collectibles-lace.trycloudflare.com)
 
 *Link automatically refreshes every 5 hours via GitHub Actions.*
