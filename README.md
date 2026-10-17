@@ -4,8 +4,8 @@
 ---
 
 ### 🌐 Live Application Link
-[![Live App](https://img.shields.io/badge/LYRA_AI_VIDEO-ONLINE_NOW-6366f1?style=for-the-badge&logo=cloudflare)](https://performed-burlington-birds-tuesday.trycloudflare.com)
+[![Live App](https://img.shields.io/badge/LYRA_AI_VIDEO-ONLINE_NOW-6366f1?style=for-the-badge&logo=cloudflare)](https://her-flat-improved-treated.trycloudflare.com)
 
-👉 **Direct Link:** [https://performed-burlington-birds-tuesday.trycloudflare.com](https://performed-burlington-birds-tuesday.trycloudflare.com)
+👉 **Direct Link:** [https://her-flat-improved-treated.trycloudflare.com](https://her-flat-improved-treated.trycloudflare.com)
 
 *Link automatically refreshes every 5 hours via GitHub Actions.*
