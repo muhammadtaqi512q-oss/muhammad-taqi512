@@ -4,8 +4,8 @@
 ---
 
 ### 🌐 Live Application Link
-[![Live App](https://img.shields.io/badge/LYRA_AI_VIDEO-ONLINE_NOW-6366f1?style=for-the-badge&logo=cloudflare)](https://involvement-electronic-ericsson-federal.trycloudflare.com)
+[![Live App](https://img.shields.io/badge/LYRA_AI_VIDEO-ONLINE_NOW-6366f1?style=for-the-badge&logo=cloudflare)](https://dentists-temp-bread-reliable.trycloudflare.com)
 
-👉 **Direct Link:** [https://involvement-electronic-ericsson-federal.trycloudflare.com](https://involvement-electronic-ericsson-federal.trycloudflare.com)
+👉 **Direct Link:** [https://dentists-temp-bread-reliable.trycloudflare.com](https://dentists-temp-bread-reliable.trycloudflare.com)
 
 *Link automatically refreshes every 5 hours via GitHub Actions.*
