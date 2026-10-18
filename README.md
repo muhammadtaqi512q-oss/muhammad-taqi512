@@ -4,8 +4,8 @@
 ---
 
 ### 🌐 Live Application Link
-[![Live App](https://img.shields.io/badge/LYRA_AI_VIDEO-ONLINE_NOW-6366f1?style=for-the-badge&logo=cloudflare)](https://cambridge-citation-rear-figure.trycloudflare.com)
+[![Live App](https://img.shields.io/badge/LYRA_AI_VIDEO-ONLINE_NOW-6366f1?style=for-the-badge&logo=cloudflare)](https://senator-editorial-cycles-pregnancy.trycloudflare.com)
 
-👉 **Direct Link:** [https://cambridge-citation-rear-figure.trycloudflare.com](https://cambridge-citation-rear-figure.trycloudflare.com)
+👉 **Direct Link:** [https://senator-editorial-cycles-pregnancy.trycloudflare.com](https://senator-editorial-cycles-pregnancy.trycloudflare.com)
 
 *Link automatically refreshes every 5 hours via GitHub Actions.*
