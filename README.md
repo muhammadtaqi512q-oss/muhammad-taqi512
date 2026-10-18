@@ -4,8 +4,8 @@
 ---
 
 ### 🌐 Live Application Link
-[![Live App](https://img.shields.io/badge/LYRA_AI_VIDEO-ONLINE_NOW-6366f1?style=for-the-badge&logo=cloudflare)](https://merit-drug-socks-valves.trycloudflare.com)
+[![Live App](https://img.shields.io/badge/LYRA_AI_VIDEO-ONLINE_NOW-6366f1?style=for-the-badge&logo=cloudflare)](https://retrieve-mystery-codes-trading.trycloudflare.com)
 
-👉 **Direct Link:** [https://merit-drug-socks-valves.trycloudflare.com](https://merit-drug-socks-valves.trycloudflare.com)
+👉 **Direct Link:** [https://retrieve-mystery-codes-trading.trycloudflare.com](https://retrieve-mystery-codes-trading.trycloudflare.com)
 
 *Link automatically refreshes every 5 hours via GitHub Actions.*
