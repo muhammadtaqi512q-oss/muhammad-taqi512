@@ -4,8 +4,8 @@
 ---
 
 ### 🌐 Live Application Link
-[![Live App](https://img.shields.io/badge/LYRA_AI_VIDEO-ONLINE_NOW-6366f1?style=for-the-badge&logo=cloudflare)](https://payday-atomic-developing-organisms.trycloudflare.com)
+[![Live App](https://img.shields.io/badge/LYRA_AI_VIDEO-ONLINE_NOW-6366f1?style=for-the-badge&logo=cloudflare)](https://metabolism-advancement-cut-include.trycloudflare.com)
 
-👉 **Direct Link:** [https://payday-atomic-developing-organisms.trycloudflare.com](https://payday-atomic-developing-organisms.trycloudflare.com)
+👉 **Direct Link:** [https://metabolism-advancement-cut-include.trycloudflare.com](https://metabolism-advancement-cut-include.trycloudflare.com)
 
 *Link automatically refreshes every 5 hours via GitHub Actions.*
