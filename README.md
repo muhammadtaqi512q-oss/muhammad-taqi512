@@ -4,8 +4,8 @@
 ---
 
 ### 🌐 Live Application Link
-[![Live App](https://img.shields.io/badge/LYRA_AI_VIDEO-ONLINE_NOW-6366f1?style=for-the-badge&logo=cloudflare)](https://commissions-throw-times-foundation.trycloudflare.com)
+[![Live App](https://img.shields.io/badge/LYRA_AI_VIDEO-ONLINE_NOW-6366f1?style=for-the-badge&logo=cloudflare)](https://focused-joel-hereby-premier.trycloudflare.com)
 
-👉 **Direct Link:** [https://commissions-throw-times-foundation.trycloudflare.com](https://commissions-throw-times-foundation.trycloudflare.com)
+👉 **Direct Link:** [https://focused-joel-hereby-premier.trycloudflare.com](https://focused-joel-hereby-premier.trycloudflare.com)
 
 *Link automatically refreshes every 5 hours via GitHub Actions.*
