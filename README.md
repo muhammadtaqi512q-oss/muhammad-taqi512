@@ -4,8 +4,8 @@
 ---
 
 ### 🌐 Live Application Link
-[![Live App](https://img.shields.io/badge/LYRA_AI_VIDEO-ONLINE_NOW-6366f1?style=for-the-badge&logo=cloudflare)](https://shows-decade-projector-camcorders.trycloudflare.com)
+[![Live App](https://img.shields.io/badge/LYRA_AI_VIDEO-ONLINE_NOW-6366f1?style=for-the-badge&logo=cloudflare)](https://hugo-celebrities-adsl-amended.trycloudflare.com)
 
-👉 **Direct Link:** [https://shows-decade-projector-camcorders.trycloudflare.com](https://shows-decade-projector-camcorders.trycloudflare.com)
+👉 **Direct Link:** [https://hugo-celebrities-adsl-amended.trycloudflare.com](https://hugo-celebrities-adsl-amended.trycloudflare.com)
 
 *Link automatically refreshes every 5 hours via GitHub Actions.*
