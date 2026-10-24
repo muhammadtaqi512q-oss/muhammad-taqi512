@@ -4,8 +4,8 @@
 ---
 
 ### 🌐 Live Application Link
-[![Live App](https://img.shields.io/badge/LYRA_AI_VIDEO-ONLINE_NOW-6366f1?style=for-the-badge&logo=cloudflare)](https://fundamental-thumbs-handy-coated.trycloudflare.com)
+[![Live App](https://img.shields.io/badge/LYRA_AI_VIDEO-ONLINE_NOW-6366f1?style=for-the-badge&logo=cloudflare)](https://exploration-benz-finally-finance.trycloudflare.com)
 
-👉 **Direct Link:** [https://fundamental-thumbs-handy-coated.trycloudflare.com](https://fundamental-thumbs-handy-coated.trycloudflare.com)
+👉 **Direct Link:** [https://exploration-benz-finally-finance.trycloudflare.com](https://exploration-benz-finally-finance.trycloudflare.com)
 
 *Link automatically refreshes every 5 hours via GitHub Actions.*
