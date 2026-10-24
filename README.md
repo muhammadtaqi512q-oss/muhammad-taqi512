@@ -4,8 +4,8 @@
 ---
 
 ### 🌐 Live Application Link
-[![Live App](https://img.shields.io/badge/LYRA_AI_VIDEO-ONLINE_NOW-6366f1?style=for-the-badge&logo=cloudflare)](https://curious-occasionally-text-carefully.trycloudflare.com)
+[![Live App](https://img.shields.io/badge/LYRA_AI_VIDEO-ONLINE_NOW-6366f1?style=for-the-badge&logo=cloudflare)](https://fundamental-thumbs-handy-coated.trycloudflare.com)
 
-👉 **Direct Link:** [https://curious-occasionally-text-carefully.trycloudflare.com](https://curious-occasionally-text-carefully.trycloudflare.com)
+👉 **Direct Link:** [https://fundamental-thumbs-handy-coated.trycloudflare.com](https://fundamental-thumbs-handy-coated.trycloudflare.com)
 
 *Link automatically refreshes every 5 hours via GitHub Actions.*
