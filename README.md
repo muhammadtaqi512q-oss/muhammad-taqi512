@@ -4,8 +4,8 @@
 ---
 
 ### 🌐 Live Application Link
-[![Live App](https://img.shields.io/badge/LYRA_AI_VIDEO-ONLINE_NOW-6366f1?style=for-the-badge&logo=cloudflare)](https://scanning-sims-commonly-beach.trycloudflare.com)
+[![Live App](https://img.shields.io/badge/LYRA_AI_VIDEO-ONLINE_NOW-6366f1?style=for-the-badge&logo=cloudflare)](https://hat-newsletter-consensus-packages.trycloudflare.com)
 
-👉 **Direct Link:** [https://scanning-sims-commonly-beach.trycloudflare.com](https://scanning-sims-commonly-beach.trycloudflare.com)
+👉 **Direct Link:** [https://hat-newsletter-consensus-packages.trycloudflare.com](https://hat-newsletter-consensus-packages.trycloudflare.com)
 
 *Link automatically refreshes every 5 hours via GitHub Actions.*
