@@ -4,8 +4,8 @@
 ---
 
 ### 🌐 Live Application Link
-[![Live App](https://img.shields.io/badge/LYRA_AI_VIDEO-ONLINE_NOW-6366f1?style=for-the-badge&logo=cloudflare)](https://leading-suited-foundation-direct.trycloudflare.com)
+[![Live App](https://img.shields.io/badge/LYRA_AI_VIDEO-ONLINE_NOW-6366f1?style=for-the-badge&logo=cloudflare)](https://accepting-respected-barriers-celebs.trycloudflare.com)
 
-👉 **Direct Link:** [https://leading-suited-foundation-direct.trycloudflare.com](https://leading-suited-foundation-direct.trycloudflare.com)
+👉 **Direct Link:** [https://accepting-respected-barriers-celebs.trycloudflare.com](https://accepting-respected-barriers-celebs.trycloudflare.com)
 
 *Link automatically refreshes every 5 hours via GitHub Actions.*
