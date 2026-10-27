@@ -4,8 +4,8 @@
 ---
 
 ### 🌐 Live Application Link
-[![Live App](https://img.shields.io/badge/LYRA_AI_VIDEO-ONLINE_NOW-6366f1?style=for-the-badge&logo=cloudflare)](https://tiger-difficulty-leo-mitsubishi.trycloudflare.com)
+[![Live App](https://img.shields.io/badge/LYRA_AI_VIDEO-ONLINE_NOW-6366f1?style=for-the-badge&logo=cloudflare)](https://pump-deposits-clothes-potentially.trycloudflare.com)
 
-👉 **Direct Link:** [https://tiger-difficulty-leo-mitsubishi.trycloudflare.com](https://tiger-difficulty-leo-mitsubishi.trycloudflare.com)
+👉 **Direct Link:** [https://pump-deposits-clothes-potentially.trycloudflare.com](https://pump-deposits-clothes-potentially.trycloudflare.com)
 
 *Link automatically refreshes every 5 hours via GitHub Actions.*
