@@ -4,8 +4,8 @@
 ---
 
 ### 🌐 Live Application Link
-[![Live App](https://img.shields.io/badge/LYRA_AI_VIDEO-ONLINE_NOW-6366f1?style=for-the-badge&logo=cloudflare)](https://clicking-hundred-true-designs.trycloudflare.com)
+[![Live App](https://img.shields.io/badge/LYRA_AI_VIDEO-ONLINE_NOW-6366f1?style=for-the-badge&logo=cloudflare)](https://assumptions-accomplished-receiver-solar.trycloudflare.com)
 
-👉 **Direct Link:** [https://clicking-hundred-true-designs.trycloudflare.com](https://clicking-hundred-true-designs.trycloudflare.com)
+👉 **Direct Link:** [https://assumptions-accomplished-receiver-solar.trycloudflare.com](https://assumptions-accomplished-receiver-solar.trycloudflare.com)
 
 *Link automatically refreshes every 5 hours via GitHub Actions.*
