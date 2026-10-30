@@ -4,8 +4,8 @@
 ---
 
 ### 🌐 Live Application Link
-[![Live App](https://img.shields.io/badge/LYRA_AI_VIDEO-ONLINE_NOW-6366f1?style=for-the-badge&logo=cloudflare)](https://contracting-conferences-sbjct-margaret.trycloudflare.com)
+[![Live App](https://img.shields.io/badge/LYRA_AI_VIDEO-ONLINE_NOW-6366f1?style=for-the-badge&logo=cloudflare)](https://financing-techrepublic-continent-microphone.trycloudflare.com)
 
-👉 **Direct Link:** [https://contracting-conferences-sbjct-margaret.trycloudflare.com](https://contracting-conferences-sbjct-margaret.trycloudflare.com)
+👉 **Direct Link:** [https://financing-techrepublic-continent-microphone.trycloudflare.com](https://financing-techrepublic-continent-microphone.trycloudflare.com)
 
 *Link automatically refreshes every 5 hours via GitHub Actions.*
