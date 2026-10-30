@@ -4,8 +4,8 @@
 ---
 
 ### 🌐 Live Application Link
-[![Live App](https://img.shields.io/badge/LYRA_AI_VIDEO-ONLINE_NOW-6366f1?style=for-the-badge&logo=cloudflare)](https://generating-chemical-teaches-rejected.trycloudflare.com)
+[![Live App](https://img.shields.io/badge/LYRA_AI_VIDEO-ONLINE_NOW-6366f1?style=for-the-badge&logo=cloudflare)](https://already-rising-topic-comfortable.trycloudflare.com)
 
-👉 **Direct Link:** [https://generating-chemical-teaches-rejected.trycloudflare.com](https://generating-chemical-teaches-rejected.trycloudflare.com)
+👉 **Direct Link:** [https://already-rising-topic-comfortable.trycloudflare.com](https://already-rising-topic-comfortable.trycloudflare.com)
 
 *Link automatically refreshes every 5 hours via GitHub Actions.*
