@@ -4,8 +4,8 @@
 ---
 
 ### 🌐 Live Application Link
-[![Live App](https://img.shields.io/badge/LYRA_AI_VIDEO-ONLINE_NOW-6366f1?style=for-the-badge&logo=cloudflare)](https://communities-intend-nonprofit-victory.trycloudflare.com)
+[![Live App](https://img.shields.io/badge/LYRA_AI_VIDEO-ONLINE_NOW-6366f1?style=for-the-badge&logo=cloudflare)](https://super-earning-remainder-prayer.trycloudflare.com)
 
-👉 **Direct Link:** [https://communities-intend-nonprofit-victory.trycloudflare.com](https://communities-intend-nonprofit-victory.trycloudflare.com)
+👉 **Direct Link:** [https://super-earning-remainder-prayer.trycloudflare.com](https://super-earning-remainder-prayer.trycloudflare.com)
 
 *Link automatically refreshes every 5 hours via GitHub Actions.*
