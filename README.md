@@ -4,8 +4,8 @@
 ---
 
 ### 🌐 Live Application Link
-[![Live App](https://img.shields.io/badge/LYRA_AI_VIDEO-ONLINE_NOW-6366f1?style=for-the-badge&logo=cloudflare)](https://strengthen-situations-bye-roads.trycloudflare.com)
+[![Live App](https://img.shields.io/badge/LYRA_AI_VIDEO-ONLINE_NOW-6366f1?style=for-the-badge&logo=cloudflare)](https://guardian-graduation-physicians-lonely.trycloudflare.com)
 
-👉 **Direct Link:** [https://strengthen-situations-bye-roads.trycloudflare.com](https://strengthen-situations-bye-roads.trycloudflare.com)
+👉 **Direct Link:** [https://guardian-graduation-physicians-lonely.trycloudflare.com](https://guardian-graduation-physicians-lonely.trycloudflare.com)
 
 *Link automatically refreshes every 5 hours via GitHub Actions.*
