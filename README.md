@@ -4,8 +4,8 @@
 ---
 
 ### 🌐 Live Application Link
-[![Live App](https://img.shields.io/badge/LYRA_AI_VIDEO-ONLINE_NOW-6366f1?style=for-the-badge&logo=cloudflare)](https://husband-monday-howard-describing.trycloudflare.com)
+[![Live App](https://img.shields.io/badge/LYRA_AI_VIDEO-ONLINE_NOW-6366f1?style=for-the-badge&logo=cloudflare)](https://third-stephanie-weed-per.trycloudflare.com)
 
-👉 **Direct Link:** [https://husband-monday-howard-describing.trycloudflare.com](https://husband-monday-howard-describing.trycloudflare.com)
+👉 **Direct Link:** [https://third-stephanie-weed-per.trycloudflare.com](https://third-stephanie-weed-per.trycloudflare.com)
 
 *Link automatically refreshes every 5 hours via GitHub Actions.*
