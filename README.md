@@ -4,8 +4,8 @@
 ---
 
 ### 🌐 Live Application Link
-[![Live App](https://img.shields.io/badge/LYRA_AI_VIDEO-ONLINE_NOW-6366f1?style=for-the-badge&logo=cloudflare)](https://listed-receives-rescue-wishing.trycloudflare.com)
+[![Live App](https://img.shields.io/badge/LYRA_AI_VIDEO-ONLINE_NOW-6366f1?style=for-the-badge&logo=cloudflare)](https://involvement-detective-gently-icon.trycloudflare.com)
 
-👉 **Direct Link:** [https://listed-receives-rescue-wishing.trycloudflare.com](https://listed-receives-rescue-wishing.trycloudflare.com)
+👉 **Direct Link:** [https://involvement-detective-gently-icon.trycloudflare.com](https://involvement-detective-gently-icon.trycloudflare.com)
 
 *Link automatically refreshes every 5 hours via GitHub Actions.*
