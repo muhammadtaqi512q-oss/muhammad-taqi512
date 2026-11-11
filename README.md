@@ -4,8 +4,8 @@
 ---
 
 ### 🌐 Live Application Link
-[![Live App](https://img.shields.io/badge/LYRA_AI_VIDEO-ONLINE_NOW-6366f1?style=for-the-badge&logo=cloudflare)](https://builders-specialties-anyway-sociology.trycloudflare.com)
+[![Live App](https://img.shields.io/badge/LYRA_AI_VIDEO-ONLINE_NOW-6366f1?style=for-the-badge&logo=cloudflare)](https://civic-showcase-arrive-luther.trycloudflare.com)
 
-👉 **Direct Link:** [https://builders-specialties-anyway-sociology.trycloudflare.com](https://builders-specialties-anyway-sociology.trycloudflare.com)
+👉 **Direct Link:** [https://civic-showcase-arrive-luther.trycloudflare.com](https://civic-showcase-arrive-luther.trycloudflare.com)
 
 *Link automatically refreshes every 5 hours via GitHub Actions.*
