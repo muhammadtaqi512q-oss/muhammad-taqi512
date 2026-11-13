@@ -4,8 +4,8 @@
 ---
 
 ### 🌐 Live Application Link
-[![Live App](https://img.shields.io/badge/LYRA_AI_VIDEO-ONLINE_NOW-6366f1?style=for-the-badge&logo=cloudflare)](https://backing-wells-multimedia-island.trycloudflare.com)
+[![Live App](https://img.shields.io/badge/LYRA_AI_VIDEO-ONLINE_NOW-6366f1?style=for-the-badge&logo=cloudflare)](https://surveillance-kinda-athletes-pensions.trycloudflare.com)
 
-👉 **Direct Link:** [https://backing-wells-multimedia-island.trycloudflare.com](https://backing-wells-multimedia-island.trycloudflare.com)
+👉 **Direct Link:** [https://surveillance-kinda-athletes-pensions.trycloudflare.com](https://surveillance-kinda-athletes-pensions.trycloudflare.com)
 
 *Link automatically refreshes every 5 hours via GitHub Actions.*
